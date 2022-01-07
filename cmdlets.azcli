@@ -1,0 +1,28 @@
+﻿az appservice plan create \
+  --name tailspin-space-game-asp \
+  --resource-group BU-IS-BDX-VDN \
+  --sku B1 \
+  --is-linux
+
+az webapp create \
+  --name tailspin-space-game-web-dev-$webappsuffix \
+  --resource-group BU-IS-BDX-VDN \
+  --plan tailspin-space-game-asp \
+  --runtime "DOTNET|5.0"
+
+az webapp create \
+  --name tailspin-space-game-web-test-$webappsuffix \
+  --resource-group BU-IS-BDX-VDN \
+  --plan tailspin-space-game-asp \
+  --runtime "DOTNET|5.0"
+
+az webapp create \
+  --name tailspin-space-game-web-staging-$webappsuffix \
+  --resource-group BU-IS-BDX-VDN \
+  --plan tailspin-space-game-asp \
+  --runtime "DOTNET|5.0"
+
+az webapp list \
+  --resource-group BU-IS-BDX-VDN \
+  --query "[].{hostName: defaultHostName, state: state}" \
+  --output table
