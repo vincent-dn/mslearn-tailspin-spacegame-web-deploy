@@ -172,6 +172,8 @@ stages:
               sourceSlot: 'swap'
               targetSlot: 'production'
               action: 'Swap Slots' 
+              # /!\/!\ so the feture is on ly on prod and the swap slot always have the previous version 
+
 ## Run Non-functional tests with JMeter
 # Usually run in staging env because test env run in a low-performance infra
   - job: RunLoadTests
